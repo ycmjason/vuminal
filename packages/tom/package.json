@@ -1,26 +1,30 @@
 {
   "name": "@vuminal/tom",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Terminal object model",
   "author": "Jason Yu <me@ycmjason.com>",
-  "homepage": "",
+  "homepage": "https://github.com/ycmjason/vuminal/tree/master/packages/tom",
   "license": "ISC",
-  "main": "src/index.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {},
+  "scripts": {
+    "types": "tsc --noEmit",
+    "build:typeDef": "tsc --declaration --outDir dist --emitDeclarationOnly --declarationMap",
+    "build:rollup": "rollup -c",
+    "prebuild": "/bin/rm -rf dist",
+    "build": "npm run build:typeDef && npm run build:rollup"
+  },
   "dependencies": {
-    "lodash.unzip": "^3.4.0"
+    "lodash.unzipwith": "^4.3.0"
   },
   "devDependencies": {
-    "@types/lodash.unzip": "^3.4.6"
+    "@types/lodash.unzipwith": "^4.3.6"
   }
 }

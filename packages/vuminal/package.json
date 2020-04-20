@@ -1,15 +1,27 @@
 {
   "name": "vuminal",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Create terminal applications with the power of Vue 3",
-  "main": "index.js",
-  "scripts": {},
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "types": "tsc --noEmit",
+    "build:typeDef": "tsc --declaration --outDir dist --emitDeclarationOnly --declarationMap",
+    "build:rollup": "rollup -c",
+    "prebuild": "/bin/rm -rf dist",
+    "build": "npm run build:typeDef && npm run build:rollup"
+  },
   "author": "Jason Yu <me@ycmjason.com>",
+  "homepage": "https://github.com/ycmjason/vuminal/tree/master/packages/vuminal",
   "license": "ISC",
   "dependencies": {
     "@vue/runtime-core": "^3.0.0-beta.2",
     "@vue/shared": "^3.0.0-beta.2",
-    "@vuminal/tom": "^0.0.1",
+    "@vuminal/tom": "^0.0.0",
     "log-update": "^4.0.0"
   }
 }

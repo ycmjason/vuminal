@@ -10,6 +10,6 @@ module.exports = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: ['@babel/plugin-transform-modules-commonjs', '@babel/plugin-proposal-optional-chaining'],
+  plugins: ['@babel/plugin-proposal-optional-chaining'],
+  exclude: 'node_modules/**',
 };
-

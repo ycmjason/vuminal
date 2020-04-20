@@ -3,7 +3,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "lib": ["esnext"],
     "module": "esnext",
     "moduleResolution": "node",
@@ -16,5 +15,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["packages"]
+  "include": ["packages/*/src"]
 }

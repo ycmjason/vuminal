@@ -2,19 +2,23 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "preversion": "lerna run build",
     "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^25.2.1",
     "jest": "^25.4.0",
     "lerna": "^3.20.2",
     "prettier": "^2.0.4",
+    "rollup": "^2.6.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   }
