@@ -1,3 +1,5 @@
+const { BABEL_TRANFORM_COMMONJS } = process.env;
+
 module.exports = {
   presets: [
     [
@@ -10,6 +12,9 @@ module.exports = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: ['@babel/plugin-proposal-optional-chaining'],
+  plugins: [
+    ...(BABEL_TRANFORM_COMMONJS ? ['@babel/plugin-transform-modules-commonjs'] : []),
+    '@babel/plugin-proposal-optional-chaining',
+  ],
   exclude: 'node_modules/**',
 };
