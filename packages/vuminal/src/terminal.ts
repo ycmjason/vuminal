@@ -6,11 +6,6 @@ export const TERMINAL = reactive(createTomElement('column'));
 
 const isDrawing = ref(false);
 
-watchEffect(() => {
-  if (!isDrawing.value) return;
-  logUpdate(render(TERMINAL));
-});
-
 export const startDrawing = () => {
   isDrawing.value = true;
 };
@@ -18,3 +13,8 @@ export const startDrawing = () => {
 export const stopDrawing = () => {
   isDrawing.value = false;
 };
+
+watchEffect(() => {
+  if (!isDrawing.value) return;
+  logUpdate(render(TERMINAL));
+});

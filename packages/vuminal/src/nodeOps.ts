@@ -1,4 +1,4 @@
-import { RendererOptions } from '@vue/runtime-core';
+import { RendererOptions, reactive } from '@vue/runtime-core';
 import { isOn } from '@vue/shared';
 import { TomNode, TomElement, createTomElement, createTomText, createTomComment, TomText } from '@vuminal/tom';
 
@@ -19,9 +19,9 @@ export const nodeOps: RendererOptions<TomNode, TomElement> = {
     parent.children = [...parent.children.slice(0, childIndex), ...parent.children.slice(childIndex + 1)];
   },
 
-  createElement: (tag) => createTomElement(tag),
-  createText: (text) => createTomText(text),
-  createComment: (text) => createTomComment(text),
+  createElement: (tag) => reactive(createTomElement(tag)),
+  createText: (text) => reactive(createTomText(text)),
+  createComment: (text) => reactive(createTomComment(text)),
 
   setText: (node: TomText, text) => {
     node.text = text;
@@ -45,7 +45,6 @@ export const nodeOps: RendererOptions<TomNode, TomElement> = {
   },
 
   querySelector: (_selector) => {
-    console.log({ _selector });
     throw new Error('querySelector not supported in test renderer.');
   },
 
