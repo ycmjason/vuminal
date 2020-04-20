@@ -19,7 +19,8 @@
     "build:typeDef": "tsc --declaration --outDir dist --emitDeclarationOnly --declarationMap",
     "build:rollup": "rollup -c",
     "prebuild": "/bin/rm -rf dist",
-    "build": "npm run build:typeDef && npm run build:rollup"
+    "build": "npm run build:typeDef && npm run build:rollup",
+    "build:watch": "npm run build:typeDef -- --watch && npm run build:rollup -- --watch"
   },
   "dependencies": {
     "lodash.unzipwith": "^4.3.0"
