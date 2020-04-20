@@ -1,0 +1,15 @@
+{
+  "name": "vuminal",
+  "version": "0.0.1",
+  "description": "Create terminal applications with the power of Vue 3",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Jason Yu <me@ycmjason.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/runtime-core": "^3.0.0-beta.2",
+    "@vue/shared": "^3.0.0-beta.2",
+    "@vuminal/tom": "^0.0.1",
+    "log-update": "^4.0.0"
+  }
+}

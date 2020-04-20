@@ -6,6 +6,6 @@
 dist
 .cache
 node_modules
-npm-debug.log*
+*-debug.log*
 .env.local
 .env.*.local
