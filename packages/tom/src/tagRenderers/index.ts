@@ -1,9 +1,11 @@
+import box from './box';
 import row from './row';
 import column from './column';
 import padding from './padding';
 
 const tagRenderers = {
   // layout
+  box,
   column,
   row,
   padding,

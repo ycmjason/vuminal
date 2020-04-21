@@ -2,16 +2,18 @@ import tagRenderers from './tagRenderers';
 import { TomNode } from './tom';
 
 export const render = (tom: TomNode): string => {
-  if (tom.type === 'comment') return '';
-  switch (tom.type) {
-    case 'element': {
+  return {
+    comment: () => '',
+    element: () => {
+      if (tom.type !== 'element') return '';
       const renderedChildren = tom.children.map(render);
       return tagRenderers[tom.tag](tom.props, {
         children: renderedChildren,
       });
-    }
-    case 'text': {
+    },
+    text: () => {
+      if (tom.type !== 'text') return '';
       return tom.text;
-    }
-  }
+    },
+  }[tom.type]();
 };

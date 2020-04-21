@@ -13,13 +13,13 @@ describe('@vuminal/tom padding.render', () => {
         }),
       ),
     ).toMatchInlineSnapshot(`
-        "
+      "
 
-          wazup               
-          this is quite cool  
+        wazup               
+        this is quite cool  
 
 
-        "
-      `);
+      "
+    `);
   });
 });
