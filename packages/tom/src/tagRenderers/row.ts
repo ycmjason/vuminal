@@ -1,18 +1,56 @@
 import unzipWith from 'lodash.unzipwith';
 
 import createTagRenderer from './createTagRenderer';
+import { padArrayEnd, padArrayCenter, padArrayStart } from '../helpers/array';
+import { padCenter } from '../helpers/string';
 
-const joinLineByLine = (s1: string, s2: string, sep: string) => {
-  const lines1 = s1.split(/\n/g);
-  const lines2 = s2.split(/\n/g);
+type Alignment = 'start' | 'center' | 'end';
 
-  const padL1 = (l1: string) => l1.padEnd(Math.max(...lines1.map((line) => line.length)));
-  const padL2 = (l2: string) => l2.padEnd(Math.max(...lines2.map((line) => line.length)));
-
-  return unzipWith([lines1, lines2], (l1: string = '', l2: string = '') => `${padL1(l1)}${sep}${padL2(l2)}`).join('\n');
+const joinLineByLine = (lines1: string[], lines2: string[], sep: string): string[] => {
+  return unzipWith([lines1, lines2], (l1: string = '', l2: string = '') => `${l1}${sep}${l2}`);
 };
 
-export default createTagRenderer(({ gapSize = 0 }: { gapSize?: number }, { children }) => {
-  if (children.length <= 0) return '';
-  return children.reduce((s1, s2) => joinLineByLine(s1, s2, ' '.repeat(gapSize)));
-});
+const alignLinesHorizontally = (lines: string[], alignment: Alignment): string[] => {
+  const maxLength = Math.max(...lines.map(({ length }) => length));
+
+  return lines.map((s) =>
+    ({
+      start: (s: string, length: number) => s.padEnd(length),
+      center: padCenter,
+      end: (s: string, length: number) => s.padStart(length),
+    }[alignment](s, maxLength)),
+  );
+};
+
+const alignLinesVertically = (lines: string[], maxLineCount: number, alignment: Alignment): string[] => {
+  return {
+    start: padArrayEnd,
+    center: padArrayCenter,
+    end: padArrayStart,
+  }[alignment](lines, maxLineCount, () => '');
+};
+
+export default createTagRenderer(
+  (
+    {
+      gapSize = 0,
+      mainAxisAlignment = 'start',
+      crossAxisAlignment = 'start',
+    }: {
+      gapSize?: number;
+      mainAxisAlignment?: Alignment;
+      crossAxisAlignment?: Alignment;
+    },
+    { children },
+  ) => {
+    if (children.length <= 0) return '';
+    return children
+      .map((s) => s.split('\n'))
+      .map((lines) =>
+        alignLinesVertically(lines, Math.max(...children.map((s) => s.split('\n').length)), crossAxisAlignment),
+      )
+      .map((lines) => alignLinesHorizontally(lines, mainAxisAlignment))
+      .reduce((lines1, lines2) => joinLineByLine(lines1, lines2, ' '.repeat(gapSize)))
+      .join('\n');
+  },
+);

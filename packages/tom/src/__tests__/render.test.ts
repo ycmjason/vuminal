@@ -20,30 +20,6 @@ describe('@vuminal/tom render', () => {
     });
   });
 
-  describe('row', () => {
-    it('should render children in rows', () => {
-      expect(
-        render(
-          createTomElement('row', {
-            props: {
-              gapSize: 5,
-            },
-            children: [
-              createTomText('hello world!!!!\nthis is amazing'),
-              createTomText('hello world!!!!\nthis is happy'),
-              createTomText('hello world!!!!\nthis is cool\nwoop woop'),
-              createTomText('hello world!!!!\nthis is fun'),
-            ],
-          }),
-        ),
-      ).toMatchInlineSnapshot(`
-        "hello world!!!!     hello world!!!!     hello world!!!!     hello world!!!!
-        this is amazing     this is happy       this is cool        this is fun    
-                                                woop woop                          "
-      `);
-    });
-  });
-
   describe('padding', () => {
     it('should add padding to children', () => {
       expect(

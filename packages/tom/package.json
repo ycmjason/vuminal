@@ -20,9 +20,8 @@
     "build:rollup": "rollup -c",
     "prebuild": "/bin/rm -rf dist",
     "build": "npm run build:typeDef && npm run build:rollup",
-    "build:watch": "npm run build:typeDef -- --watch && npm run build:rollup -- --watch",
     "test": "jest",
-    "test:watch": "jest -w"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "lodash.unzipwith": "^4.3.0"
