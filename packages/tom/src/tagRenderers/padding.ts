@@ -1,4 +1,4 @@
-import createTagRenderer from './createTagRenderer';
+import { createTagRenderer } from './TagRenderer';
 import row from './row';
 
 export default createTagRenderer(({ size = 0 }: { size?: number }, { children }) => {

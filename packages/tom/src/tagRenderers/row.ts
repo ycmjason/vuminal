@@ -1,6 +1,6 @@
 import unzipWith from 'lodash.unzipwith';
 
-import createTagRenderer from './createTagRenderer';
+import { createTagRenderer } from './TagRenderer';
 import { Alignment, align } from '../helpers/alignment';
 
 const joinLineByLine = (lines1: string[], lines2: string[], sep: string): string[] => {

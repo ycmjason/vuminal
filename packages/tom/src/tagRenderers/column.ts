@@ -1,4 +1,4 @@
-import createTagRenderer from './createTagRenderer';
+import { createTagRenderer } from './TagRenderer';
 import { Alignment, align } from '../helpers/alignment';
 
 export default createTagRenderer(
