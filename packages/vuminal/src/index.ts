@@ -1,13 +1,13 @@
 import { createRenderer } from '@vue/runtime-core';
-import { nodeOps } from './nodeOps';
-import { TERMINAL, startDrawing, stopDrawing } from './terminal';
+import type { UIConnector } from './UIConnector';
 
-export const { render, createApp } = createRenderer({ ...nodeOps });
-
-export const draw = (...args: Parameters<typeof createApp>): (() => void) => {
-  createApp(...args).mount(TERMINAL);
-  startDrawing();
-  return stopDrawing;
+export default <TNode, TElement>({ ROOT, nodeOps, startDrawing, stopDrawing }: UIConnector<TNode, TElement>) => {
+  const { createApp } = createRenderer({ ...nodeOps });
+  return (...args: Parameters<typeof createApp>): (() => void) => {
+    createApp(...args).mount(ROOT);
+    startDrawing();
+    return stopDrawing;
+  };
 };
 
-export * from '@vue/runtime-core';
+export type { UIConnector };

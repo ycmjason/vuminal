@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "ES2020.Symbol.WellKnown"]
+  },
+  "include": ["src"]
+}

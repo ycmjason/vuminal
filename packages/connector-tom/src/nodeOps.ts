@@ -1,6 +1,6 @@
 import { RendererOptions, reactive } from '@vue/runtime-core';
 import { isOn } from '@vue/shared';
-import { TomNode, TomElement, createTomElement, createTomText, createTomComment, TomText } from '@vuminal/tom';
+import { TomNode, TomElement, TomText, createTomElement, createTomText, createTomComment } from '@vuminal/tom';
 
 export const nodeOps: RendererOptions<TomNode, TomElement> = {
   insert: (child, parent, beforeNode?) => {

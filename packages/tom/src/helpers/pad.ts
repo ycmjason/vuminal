@@ -1,4 +1,4 @@
-import { box } from '../data/Box';
+import { box } from '../data/box';
 
 export type Paddable<X> = { concat: (x: X) => X; length: number };
 
