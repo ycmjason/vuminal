@@ -1,33 +1,10 @@
 import unzipWith from 'lodash.unzipwith';
 
 import createTagRenderer from './createTagRenderer';
-import { padArrayEnd, padArrayCenter, padArrayStart } from '../helpers/array';
-import { padCenter } from '../helpers/string';
-
-type Alignment = 'start' | 'center' | 'end';
+import { Alignment, align } from '../helpers/alignment';
 
 const joinLineByLine = (lines1: string[], lines2: string[], sep: string): string[] => {
   return unzipWith([lines1, lines2], (l1: string = '', l2: string = '') => `${l1}${sep}${l2}`);
-};
-
-const alignLinesHorizontally = (lines: string[], alignment: Alignment): string[] => {
-  const maxLength = Math.max(...lines.map(({ length }) => length));
-
-  return lines.map((s) =>
-    ({
-      start: (s: string, length: number) => s.padEnd(length),
-      center: padCenter,
-      end: (s: string, length: number) => s.padStart(length),
-    }[alignment](s, maxLength)),
-  );
-};
-
-const alignLinesVertically = (lines: string[], maxLineCount: number, alignment: Alignment): string[] => {
-  return {
-    start: padArrayEnd,
-    center: padArrayCenter,
-    end: padArrayStart,
-  }[alignment](lines, maxLineCount, () => '');
 };
 
 export default createTagRenderer(
@@ -47,9 +24,12 @@ export default createTagRenderer(
     return children
       .map((s) => s.split('\n'))
       .map((lines) =>
-        alignLinesVertically(lines, Math.max(...children.map((s) => s.split('\n').length)), crossAxisAlignment),
+        align(lines, crossAxisAlignment, Math.max(...children.map((s) => s.split('\n').length)), () => ['']),
       )
-      .map((lines) => alignLinesHorizontally(lines, mainAxisAlignment))
+      .map((lines) => {
+        const maxLength = Math.max(...lines.map(({ length }) => length));
+        return lines.map((s) => align(s, mainAxisAlignment, maxLength, () => ' '));
+      })
       .reduce((lines1, lines2) => joinLineByLine(lines1, lines2, ' '.repeat(gapSize)))
       .join('\n');
   },
