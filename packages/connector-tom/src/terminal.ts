@@ -1,4 +1,4 @@
-import { watchEffect, ref, Ref, reactive } from 'vuminal/node_modules/@vue/runtime-core';
+import { watchEffect, ref, Ref, reactive } from '@vue/runtime-core';
 import { render, createTomElement } from '@vuminal/tom';
 import logUpdate from 'log-update';
 

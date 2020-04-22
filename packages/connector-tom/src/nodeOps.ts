@@ -14,9 +14,7 @@ export const nodeOps: RendererOptions<TomNode, TomElement> = {
       throw new Error('parent do not contain child');
     }
 
-    const parent = child.parentNode;
-    const childIndex = parent.children.indexOf(child);
-    parent.children = [...parent.children.slice(0, childIndex), ...parent.children.slice(childIndex + 1)];
+    child.parentNode.children = child.parentNode.children.filter((c) => c !== child);
   },
 
   createElement: (tag) => reactive(createTomElement(tag)),

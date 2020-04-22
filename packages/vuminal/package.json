@@ -12,6 +12,7 @@
     "types": "tsc --noEmit",
     "build:typeDef": "tsc --declaration --outDir dist --emitDeclarationOnly --declarationMap",
     "build:rollup": "rollup -c",
+    "build:rollup:watch": "rollup -c -w",
     "prebuild": "/bin/rm -rf dist",
     "build": "npm run build:typeDef && npm run build:rollup",
     "test": "jest",

@@ -4,7 +4,7 @@
   "scripts": {
     "preversion": "lerna run build",
     "build": "lerna run build",
-    "build:watch": "lerna run --parallel build:watch",
+    "build:rollup:watch": "lerna run --parallel build:rollup:watch",
     "test": "lerna run test",
     "test:watch": "lerna run --parallel test:watch"
   },
@@ -21,6 +21,7 @@
     "lerna": "^3.20.2",
     "prettier": "^2.0.5",
     "rollup": "^2.7.1",
+    "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

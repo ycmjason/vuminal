@@ -1,9 +1,9 @@
 {
-  "name": "@vuminal/connector-tom",
+  "name": "@vuminal/connector-blessed",
   "version": "0.0.1",
-  "description": "connecting vuminal to tom",
+  "description": "connecting vuminal to blessed",
   "author": "Jason Yu <me@ycmjason.com>",
-  "homepage": "https://github.com/ycmjason/vuminal/tree/master/packages/connector-tom",
+  "homepage": "https://github.com/ycmjason/vuminal/tree/master/packages/connector-blessed",
   "license": "ISC",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -38,10 +38,10 @@
   "dependencies": {
     "@vue/runtime-core": "^3.0.0-beta.3",
     "@vue/shared": "^3.0.0-beta.3",
-    "@vuminal/tom": "^0.0.3",
-    "log-update": "^4.0.0"
+    "blessed": "^0.1.81"
   },
   "devDependencies": {
+    "@types/blessed": "^0.1.17",
     "vuminal": "^0.0.3"
   }
 }

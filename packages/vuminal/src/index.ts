@@ -10,4 +10,6 @@ export default <TNode, TElement>({ ROOT, nodeOps, startDrawing, stopDrawing }: U
   };
 };
 
+export * from '@vue/runtime-core';
+
 export type { UIConnector };
