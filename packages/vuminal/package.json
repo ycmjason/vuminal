@@ -1,6 +1,6 @@
 {
   "name": "vuminal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Create terminal applications with the power of Vue 3",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
