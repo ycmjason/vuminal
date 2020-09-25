@@ -1,6 +1,6 @@
 {
   "name": "@vuminal/connector-blessed",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "connecting vuminal to blessed",
   "author": "Jason Yu <me@ycmjason.com>",
   "homepage": "https://github.com/ycmjason/vuminal/tree/master/packages/connector-blessed",
@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "@types/blessed": "^0.1.17",
-    "vuminal": "^0.0.4"
+    "vuminal": "^0.0.5"
   }
 }
