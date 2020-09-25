@@ -68,7 +68,7 @@ export const nodeOps: RendererOptions<Widgets.Node, Widgets.BlessedElement> = {
 
   setElementText: (el: Widgets.BlessedElement, text) => {
     for (const child of el.children) {
-      delete child.parent;
+      child.detach();
     }
 
     el.content = text;

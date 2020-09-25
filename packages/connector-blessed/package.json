@@ -36,8 +36,8 @@
     "url": "https://github.com/ycmjason/vuminal/issues"
   },
   "dependencies": {
-    "@vue/runtime-core": "^3.0.0-beta.3",
-    "@vue/shared": "^3.0.0-beta.3",
+    "@vue/runtime-core": "^3.0.0",
+    "@vue/shared": "^3.0.0",
     "blessed": "^0.1.81"
   },
   "devDependencies": {

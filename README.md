@@ -2,10 +2,22 @@
 
 Create terminal applications with the power of Vue 3.
 
-## Usage
+## Simple example
+
+Install `vuminal` and `@vuminal/connector-tom`
+
+```
+> npm install vuminal
+> npm install @vuminal/connector-tom
+```
+
+Create `index.js`
 
 ```ts
-const { draw, h, ref } = require('vuminal');
+const { default: Vuminal, h, ref } = require('vuminal');
+const tomConnector = require('@vuminal/connector-tom');
+
+const draw = Vuminal(tomConnector);
 
 draw({
   setup() {
@@ -20,7 +32,17 @@ draw({
 });
 ```
 
+Run it!
+
+```
+> node index.js
+```
+
 ![](README-demo.gif)
+
+## How does it work?
+
+WIP
 
 ## Author
 
